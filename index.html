@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="formContainer">
+        <div id="loginForm">
+            <input type="text" id="loginId" placeholder="Enter your Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <div id="passwordResetForm" style="display:none;">
+                <input type="email" id="resetEmail" placeholder="Enter your email">
+                <button onclick="resetPassword()">Reset Password</button>
+            </div>
+            <button onclick="toggleResetForm()">Forgot Password?</button>
+            <p onclick="toggleForms()">Don't have an account? Register</p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <input type="text" id="registerName" placeholder="Name">
+            <input type="text" id="registerMobile" placeholder="Mobile Number">
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="date" id="registerDob">
+            <select id="registerGender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="password" id="registerPassword" placeholder="Password">
+            <button onclick="register()">Register</button>
+            <p onclick="toggleForms()">Already have an account? Login</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
