@@ -10,6 +10,16 @@ function toggleResetForm() {
     resetForm.style.display = resetForm.style.display === 'none' ? 'block' : 'none';
 }
 
+function isValidPassword(password) {
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    const hasSpecialChar = /[\W_]/.test(password);
+    const isMinLength = password.length >= 8;
+
+    return hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar && isMinLength;
+}
+
 function resetPassword() {
     const email = document.getElementById('resetEmail').value;
     const user = JSON.parse(localStorage.getItem(email));
@@ -70,6 +80,11 @@ function register() {
         return;
     }
 
+    if (!isValidPassword(userData.password)) {
+        alert('Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.');
+        return;
+    }
+
     saveUser(userData);
     alert('Registration successful. Please log in.');
     toggleForms();
@@ -88,4 +103,27 @@ function login() {
 
     localStorage.setItem('currentUser', JSON.stringify(user));
     window.location.href = 'dashboard.html';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUserEmail = localStorage.getItem('currentUserEmail');
+
+    if (currentUser || currentUserEmail) {
+        console.log('User is logged in:', currentUser ? currentUser.name : currentUserEmail);
+        if (window.location.pathname !== '/dashboard.html') {
+            window.location.href = 'dashboard.html';
+        } else {
+            displayUserProfile();
+            displayTasks();
+        }
+    }
+});
+
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUserEmail');
+
+    window.location.href = 'index.html';
 }
