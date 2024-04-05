@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Dashboard</h1>
+        <nav>
+            <a href="weather-and-gif.html" id="weatherApi">Get Weather and GIF</a>
+            <a href="index.html" id="logoutButton">Logout</a>
+        </nav>
+    </header>
+
+    <section id="currentTime">
+        <h2>Current Time</h2>
+        <div id="clockContainer">
+            <div id="clock">00:00:00</div>
+        </div>
+    </section>
+
+    <section id="profileSection">
+        <form id="editProfileForm" style="display: none;" onsubmit="editProfile(event)">
+            <input type="text" id="editName" placeholder="Name">
+            <input type="email" id="editEmail" placeholder="Email">
+            <input type="text" id="editMobile" placeholder="Mobile">
+            <input type="date" id="editDob">
+            <select id="editGender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <button type="submit">Save Changes</button>
+        </form>
+        <h2>Profile</h2>
+        <p><strong>Name:</strong> <span id="profileName"></span></p>
+        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        <p><strong>Mobile:</strong> <span id="profileMobile"></span></p>
+        <p><strong>DOB:</strong> <span id="profileDob"></span></p>
+        <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+        <button onclick="toggleEditProfileForm()">Edit Profile</button>
+    </section>
+
+    <section id="taskSection">
+        <h2>Tasks</h2>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+        <div id="tasksList"></div>
+    </section>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
