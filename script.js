@@ -54,6 +54,17 @@ function register() {
         return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userData.email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    if (!/^[\d]{10}$/.test(userData.mobile)) {
+        alert('Please enter a valid 10-digit mobile number.');
+        return;
+    }
+
     if (getUser(userData.email)) {
         alert('A user with this email already exists.');
         return;
@@ -63,6 +74,7 @@ function register() {
     alert('Registration successful. Please log in.');
     toggleForms();
 }
+
 
 function login() {
     const loginId = document.getElementById('loginId').value;
