@@ -145,6 +145,5 @@ function toggleTaskCompletion(index) {
 
     tasks[index].completed = !tasks[index].completed;
     localStorage.setItem(user.email + '_tasks', JSON.stringify(tasks));
-    displayTasks();0
+    displayTasks();
 }
-
